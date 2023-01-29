@@ -10,7 +10,6 @@ package eos
 
 import (
 	"fmt"
-
 	"github.com/go-acme/lego/v4/certcrypto"
 	"github.com/go-acme/lego/v4/certificate"
 	"github.com/go-acme/lego/v4/lego"

@@ -33,12 +33,14 @@ func obtainCert(cf eos.EosConfig) {
 		eos.GetLogger().ErrorF("init reg web error: %s", err.Error())
 		return
 	}
+
 	// reg account
 	reg, err := eos.RegAccount(client)
 	if err != nil {
 		eos.GetLogger().ErrorF("init reg account error: %s", err.Error())
 		return
 	}
+
 	account.AddRegistration(reg)
 	res, err := eos.ObtainDomains(client, cf.Domain)
 	if err != nil {

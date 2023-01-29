@@ -15,6 +15,7 @@ import (
 
 func autoReNew(cf eos.EosConfig, spec string) {
 	g := cron.NewGroup(spec)
+	eos.GetLogger().InfoF("cronjob spec [%s]", spec)
 	id, err := g.AddFunc(func() {
 		eos.GetLogger().WarnF("cronjob start to auto renew")
 		obtainCert(cf)

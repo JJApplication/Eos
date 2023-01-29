@@ -18,7 +18,7 @@ type EosConfig struct {
 	Email     string
 	Domain    []string
 	CertRoot  string
-	Challenge string // 写入质询文件的路径
+	Challenge string // 存储质询文件路径
 }
 
 var config EosConfig

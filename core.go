@@ -9,6 +9,7 @@ Copyright Renj
 package main
 
 import (
+	"github.com/JJApplication/fushin/utils/env"
 	"time"
 
 	eos "github.com/JJApplication/eos/eos_acme"
@@ -25,6 +26,7 @@ type EosCore struct {
 func (e *EosCore) Run() {
 	autoReNew(e.cf, e.ReNewTime)
 	e.preRun()
+	e.testMode()
 	e.mainLoop()
 }
 
@@ -37,4 +39,13 @@ func (e *EosCore) mainLoop() {
 
 func (e *EosCore) preRun() {
 	e.logger.InfoF("[%s] config loaded: %+v", e.Name, e.cf)
+}
+
+// 测试模式下直接进行注册测试
+func (e *EosCore) testMode() {
+	test := env.GetEnv("test")
+	if test != "" {
+		e.logger.InfoF("[%s] test mode is active", e.Name)
+		obtainCert(e.cf)
+	}
 }
