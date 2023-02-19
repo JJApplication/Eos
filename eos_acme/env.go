@@ -19,6 +19,8 @@ type EosConfig struct {
 	Domain    []string
 	CertRoot  string
 	Challenge string // 存储质询文件路径
+	Renew string // 刷新间隔 默认3个月
+	Disable bool
 }
 
 var config EosConfig
@@ -31,6 +33,8 @@ func init() {
 		Domain:    strings.Fields(envLoader.Get("Domain").Raw()),
 		CertRoot:  envLoader.Get("CertRoot").Raw(),
 		Challenge: envLoader.Get("Challenge").Raw(),
+		Renew: envLoader.Get("Renew").Raw(),
+		Disable: envLoader.Get("Disable").MustBool(true),
 	}
 }
 

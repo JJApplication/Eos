@@ -15,7 +15,7 @@ import (
 func main() {
 	core := EosCore{
 		Name:      "Eos",
-		ReNewTime: "* * * * 1/3 ?",
+		ReNewTime: eos.GetConfig().Renew,
 		cf:        eos.GetConfig(),
 		logger:    eos.GetLogger(),
 	}

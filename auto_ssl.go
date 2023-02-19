@@ -14,6 +14,10 @@ import (
 )
 
 func autoReNew(cf eos.EosConfig, spec string) {
+	if cf.Disable {
+		eos.GetLogger().Info("autossl not enabled")
+		return
+	}
 	g := cron.NewGroup(spec)
 	eos.GetLogger().InfoF("cronjob spec [%s]", spec)
 	id, err := g.AddFunc(func() {
